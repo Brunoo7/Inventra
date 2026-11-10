@@ -8,7 +8,6 @@ class Produto:
         self.quantidade = quantidade
         self.categoria = categoria
 
-
     def to_dict(self):
         return {
             "ID": self.id,
@@ -22,30 +21,47 @@ class GerenciarProdutos:
 
     def __init__(self):
         try:
+
             with open("dados.json", "r", encoding="utf-8") as f:
                 json.load(f)
+
         except FileNotFoundError:
+
             with open("dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
+
         except json.JSONDecodeError:
+
             with open("dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
 
     def cadastrar_produto(self):
         with open("dados.json", "r", encoding="utf-8") as f:
             produtos = json.load(f)
+
         maior_id = 0
+
         for produto in produtos:
+
             if maior_id < produto["ID"]:
                 maior_id = produto["ID"]
+
         id = maior_id + 1
         nome = input("Nome: ")
         preco = float(input("Preço: "))
+
+        if preco <= 0:
+            print("Valor Inválido")
         quantidade = int(input("Quantidade disponível: "))
+
+        if quantidade <= 0:
+            print("Valor Inválido")
+
         categoria = input("Categoria: ")
         produto = Produto(id,nome, preco, quantidade, categoria)
         dados = produto.to_dict()
         produtos.append(dados)
+        
         with open("dados.json", "w", encoding="utf-8") as f:
             json.dump(produtos, f, ensure_ascii=False, indent=4)
 
@@ -60,9 +76,7 @@ class GerenciarProdutos:
         with open("dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
-
         encontrado = False
-
 
         for produto in busca:
             if busca_id == produto["ID"]:
@@ -76,9 +90,7 @@ class GerenciarProdutos:
         with open("dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
-
         encontrado = False
-
 
         for produto in busca:
             if busca_id == produto["ID"]:
@@ -86,27 +98,25 @@ class GerenciarProdutos:
                 print(produto)
                 mod = input("Qual item do produto quer modificar? ")
 
-
                 if mod in ["Nome", "Preço", "Quantidade", "Categoria"]:
                     item = input("Digite a modificação: ")
 
-
                     if mod == "Preço":
                         item = float(item)
-
+                        if item <= 0:
+                            print("Valor Inválido")
 
                     elif mod == "Quantidade":
                         item = int(item)
-
+                        if item <= 0:
+                            print("Valor Inválido")
 
                     produto[mod] = item
-
 
                     with open("dados.json", "w", encoding="utf-8") as f:
                         json.dump(busca, f, ensure_ascii=False, indent=4)
                 else:
                     print("Item inválido")
-
 
         if encontrado == False:
             print("Produto não encontrado")
@@ -116,30 +126,36 @@ class GerenciarProdutos:
         with open("dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
-
         encontrado = False
 
-
         for produto in busca:
+
             if busca_id == produto["ID"]:
                 encontrado = True
                 print(produto)
                 decisao = input("Tem certeza que quer excluir esse produto? (s/n) ")
+
                 if decisao == "s":
                     busca.remove(produto)
+
                     with open("dados.json", "w", encoding="utf-8") as f:
                         json.dump(busca, f, indent=4, ensure_ascii=False)
                     print("Produto excluido")
+
                     break
+
                 else:
                     print("Produto NÃO excluido")
+
         if encontrado == False:
             print("Produto não encontrado")
 
 def menu():
     opcao = 0
     prod = GerenciarProdutos()
+
     while opcao != 6:
+
         try:
             print("\n======ARMAZEM======")
             print("1 - Cadastrar Produto")
@@ -149,27 +165,34 @@ def menu():
             print("5 - Excluir Produto")
             print("6 - Saindo...")
             opcao = int(input("Escolha uma opção: "))
+
             match opcao:
+
                 case 1:
                     print("Cadastrar Produto")
                     prod.cadastrar_produto()
+
                 case 2:
                     print("Listar Produtos")
                     prod.listar_produtos()
+
                 case 3:
                     print("Buscar Produto")
                     prod.buscar_produto()
+
                 case 4:
                     print("Atualizar Produto")
                     prod.atualizar_produto()
+
                 case 5:
                     print("Excluir Produto")
                     prod.excluir_produto()
+
                 case 6:
                     print("Saindo...")
+
                 case _:
                     print("Opção inválida")
-
 
         except ValueError:
             print("Opção inválida, tente novamente")

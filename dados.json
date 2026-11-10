@@ -1,0 +1,65 @@
+[
+    {
+        "ID": 1,
+        "Nome": "Teclado mecânico",
+        "Preço": 249.9,
+        "Quantidade": 15,
+        "Categoria": "Periféricos"
+    },
+    {
+        "ID": 2,
+        "Nome": "Mouse sem fio",
+        "Preço": 89.9,
+        "Quantidade": 28,
+        "Categoria": "Periféricos"
+    },
+    {
+        "ID": 3,
+        "Nome": "Monitor 24 polegadas",
+        "Preço": 799.0,
+        "Quantidade": 8,
+        "Categoria": "Monitores"
+    },
+    {
+        "ID": 4,
+        "Nome": "Headset USB",
+        "Preço": 159.9,
+        "Quantidade": 12,
+        "Categoria": "Áudio"
+    },
+    {
+        "ID": 5,
+        "Nome": "Webcam Full HD",
+        "Preço": 189.5,
+        "Quantidade": 10,
+        "Categoria": "Acessórios"
+    },
+    {
+        "ID": 6,
+        "Nome": "SSD 1 TB",
+        "Preço": 429.9,
+        "Quantidade": 7,
+        "Categoria": "Armazenamento"
+    },
+    {
+        "ID": 7,
+        "Nome": "Memória RAM 16 GB",
+        "Preço": 349.9,
+        "Quantidade": 20,
+        "Categoria": "Hardware"
+    },
+    {
+        "ID": 8,
+        "Nome": "Cabo HDMI 2 m",
+        "Preço": 34.9,
+        "Quantidade": 35,
+        "Categoria": "Cabos"
+    },
+    {
+        "ID": 9,
+        "Nome": "Suporte para notebook",
+        "Preço": 79.9,
+        "Quantidade": 14,
+        "Categoria": "Acessórios"
+    }
+]
