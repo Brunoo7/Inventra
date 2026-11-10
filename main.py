@@ -17,3 +17,17 @@ class Produto:
             "Quantidade": self.quantidade,
             "Categoria": self.categoria
         }
+
+class GerenciarProdutos:
+
+
+    def __init__(self):
+        try:
+            with open("dados.json", "r", encoding="utf-8") as f:
+                json.load(f)
+        except FileNotFoundError:
+            with open("dados.json", "w", encoding="utf-8") as f:
+                json.dump([], f)
+        except json.JSONDecodeError:
+            with open("dados.json", "w", encoding="utf-8") as f:
+                json.dump([], f)
