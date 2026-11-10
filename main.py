@@ -50,3 +50,8 @@ def cadastrar_produto(self):
         with open("dados.json", "w", encoding="utf-8") as f:
             json.dump(produtos, f, ensure_ascii=False, indent=4)
 
+def listar_produtos(self):
+        with open("dados.json", "r", encoding="utf-8") as f:
+            dados_lidos = json.load(f)
+            for produto in dados_lidos:
+                print(produto)
