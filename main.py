@@ -59,7 +59,7 @@ class GerenciarProdutos:
         while True:
             quantidade = int(input("Quantidade disponível: "))
 
-            if quantidade > 0:
+            if quantidade >= 0:
                 break
         
             print("Valor inválido! Digite uma quantidade positiva.")
@@ -108,25 +108,24 @@ class GerenciarProdutos:
                 if mod in ["Nome", "Preço", "Quantidade", "Categoria"]:
 
                     if mod == "Preço":
-                        item = float(item)
+                        
                         while True:
-                            item = input("Digite a modificação: ")
-
+                            item = float(input("Digite a modificação: "))
+                        
                             if item > 0:
                                 break
-                        
+                            
                             print("Valor inválido! Digite um preço positivo.")
 
                     elif mod == "Quantidade":
-                        item = int(item)
 
                         while True:
-                            item = input("Digite a modificação: ")
+                            item = int(input("Digite a modificação: "))
 
-                            if item > 0:
+                            if item >= 0:
                                 break
-                        
-                            print("Valor inválido! Digite um preço positivo.")
+                            
+                            print("Valor inválido! Digite uma quantidade maior ou igual a zero.")
 
                     produto[mod] = item
 
