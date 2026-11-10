@@ -22,21 +22,21 @@ class GerenciarProdutos:
     def __init__(self):
         try:
 
-            with open("dados.json", "r", encoding="utf-8") as f:
+            with open("inventra_dados.json", "r", encoding="utf-8") as f:
                 json.load(f)
 
         except FileNotFoundError:
 
-            with open("dados.json", "w", encoding="utf-8") as f:
+            with open("inventra_dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
 
         except json.JSONDecodeError:
 
-            with open("dados.json", "w", encoding="utf-8") as f:
+            with open("inventra_dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
 
     def cadastrar_produto(self):
-        with open("dados.json", "r", encoding="utf-8") as f:
+        with open("inventra_dados.json", "r", encoding="utf-8") as f:
             produtos = json.load(f)
 
         maior_id = 0
@@ -59,28 +59,28 @@ class GerenciarProdutos:
         while True:
             quantidade = int(input("Quantidade disponível: "))
 
-            if preco > 0:
+            if quantidade > 0:
                 break
         
-            print("Valor inválido! Digite um preço positivo.")
+            print("Valor inválido! Digite uma quantidade positiva.")
 
         categoria = input("Categoria: ")
         produto = Produto(id,nome, preco, quantidade, categoria)
         dados = produto.to_dict()
         produtos.append(dados)
         
-        with open("dados.json", "w", encoding="utf-8") as f:
+        with open("inventra_dados.json", "w", encoding="utf-8") as f:
             json.dump(produtos, f, ensure_ascii=False, indent=4)
 
     def listar_produtos(self):
-        with open("dados.json", "r", encoding="utf-8") as f:
+        with open("inventra_dados.json", "r", encoding="utf-8") as f:
             dados_lidos = json.load(f)
             for produto in dados_lidos:
                 print(produto)
 
     def buscar_produto(self):
         busca_id = int(input("Qual o ID do produto que você quer buscar? "))
-        with open("dados.json", "r", encoding="utf-8") as f:
+        with open("inventra_dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
         encontrado = False
@@ -94,7 +94,7 @@ class GerenciarProdutos:
 
     def atualizar_produto(self):
         busca_id = int(input("Qual o ID do produto que você quer atualizar? "))
-        with open("dados.json", "r", encoding="utf-8") as f:
+        with open("inventra_dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
         encontrado = False
@@ -106,11 +106,12 @@ class GerenciarProdutos:
                 mod = input("Qual item do produto quer modificar? ")
 
                 if mod in ["Nome", "Preço", "Quantidade", "Categoria"]:
-                    item = input("Digite a modificação: ")
 
                     if mod == "Preço":
                         item = float(item)
                         while True:
+                            item = input("Digite a modificação: ")
+
                             if item > 0:
                                 break
                         
@@ -118,7 +119,10 @@ class GerenciarProdutos:
 
                     elif mod == "Quantidade":
                         item = int(item)
+
                         while True:
+                            item = input("Digite a modificação: ")
+
                             if item > 0:
                                 break
                         
@@ -126,7 +130,7 @@ class GerenciarProdutos:
 
                     produto[mod] = item
 
-                    with open("dados.json", "w", encoding="utf-8") as f:
+                    with open("inventra_dados.json", "w", encoding="utf-8") as f:
                         json.dump(busca, f, ensure_ascii=False, indent=4)
                 else:
                     print("Item inválido")
@@ -136,7 +140,7 @@ class GerenciarProdutos:
 
     def excluir_produto(self):
         busca_id = int(input("Qual o ID do produto que você quer excluir? "))
-        with open("dados.json", "r", encoding="utf-8") as f:
+        with open("inventra_dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
         encontrado = False
@@ -151,7 +155,7 @@ class GerenciarProdutos:
                 if decisao == "s":
                     busca.remove(produto)
 
-                    with open("dados.json", "w", encoding="utf-8") as f:
+                    with open("inventra_dados.json", "w", encoding="utf-8") as f:
                         json.dump(busca, f, indent=4, ensure_ascii=False)
                     print("Produto excluido")
 
