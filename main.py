@@ -77,8 +77,8 @@ class GerenciarProdutos:
 
             if categoria != "":
                 break
-            
-            print("A categoria não pode ficar vazia!")
+
+            print("Valor inválido! Digite uma quantidade maior ou igual a zero.")
 
         produto = Produto(id,nome, preco, quantidade, categoria)
         dados = produto.to_dict()
