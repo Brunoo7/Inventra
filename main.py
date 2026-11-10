@@ -55,3 +55,19 @@ def listar_produtos(self):
             dados_lidos = json.load(f)
             for produto in dados_lidos:
                 print(produto)
+
+def buscar_produto(self):
+        busca_id = int(input("Qual o ID do produto que você quer buscar? "))
+        with open("dados.json", "r", encoding="utf-8") as f:
+            busca = json.load(f)
+
+
+        encontrado = False
+
+
+        for produto in busca:
+            if busca_id == produto["ID"]:
+                encontrado = True
+                print(produto)
+        if encontrado == False:
+            print("Produto não encontrado")
