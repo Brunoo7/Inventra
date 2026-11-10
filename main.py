@@ -31,3 +31,22 @@ class GerenciarProdutos:
         except json.JSONDecodeError:
             with open("dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
+
+def cadastrar_produto(self):
+        with open("dados.json", "r", encoding="utf-8") as f:
+            produtos = json.load(f)
+        maior_id = 0
+        for produto in produtos:
+            if maior_id < produto["ID"]:
+                maior_id = produto["ID"]
+        id = maior_id + 1
+        nome = input("Nome: ")
+        preco = float(input("Preço: "))
+        quantidade = int(input("Quantidade disponível: "))
+        categoria = input("Categoria: ")
+        produto = Produto(id,nome, preco, quantidade, categoria)
+        dados = produto.to_dict()
+        produtos.append(dados)
+        with open("dados.json", "w", encoding="utf-8") as f:
+            json.dump(produtos, f, ensure_ascii=False, indent=4)
+
