@@ -20,7 +20,6 @@ class Produto:
 
 class GerenciarProdutos:
 
-
     def __init__(self):
         try:
             with open("dados.json", "r", encoding="utf-8") as f:
@@ -32,7 +31,7 @@ class GerenciarProdutos:
             with open("dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
 
-def cadastrar_produto(self):
+    def cadastrar_produto(self):
         with open("dados.json", "r", encoding="utf-8") as f:
             produtos = json.load(f)
         maior_id = 0
@@ -50,13 +49,13 @@ def cadastrar_produto(self):
         with open("dados.json", "w", encoding="utf-8") as f:
             json.dump(produtos, f, ensure_ascii=False, indent=4)
 
-def listar_produtos(self):
+    def listar_produtos(self):
         with open("dados.json", "r", encoding="utf-8") as f:
             dados_lidos = json.load(f)
             for produto in dados_lidos:
                 print(produto)
 
-def buscar_produto(self):
+    def buscar_produto(self):
         busca_id = int(input("Qual o ID do produto que você quer buscar? "))
         with open("dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
@@ -69,5 +68,45 @@ def buscar_produto(self):
             if busca_id == produto["ID"]:
                 encontrado = True
                 print(produto)
+        if encontrado == False:
+            print("Produto não encontrado")
+
+    def atualizar_produto(self):
+        busca_id = int(input("Qual o ID do produto que você quer atualizar? "))
+        with open("dados.json", "r", encoding="utf-8") as f:
+            busca = json.load(f)
+
+
+        encontrado = False
+
+
+        for produto in busca:
+            if busca_id == produto["ID"]:
+                encontrado = True
+                print(produto)
+                mod = input("Qual item do produto quer modificar? ")
+
+
+                if mod in ["Nome", "Preço", "Quantidade", "Categoria"]:
+                    item = input("Digite a modificação: ")
+
+
+                    if mod == "Preço":
+                        item = float(item)
+
+
+                    elif mod == "Quantidade":
+                        item = int(item)
+
+
+                    produto[mod] = item
+
+
+                    with open("dados.json", "w", encoding="utf-8") as f:
+                        json.dump(busca, f, ensure_ascii=False, indent=4)
+                else:
+                    print("Item inválido")
+
+
         if encontrado == False:
             print("Produto não encontrado")
