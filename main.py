@@ -110,13 +110,19 @@ class GerenciarProdutos:
 
                     if mod == "Preço":
                         item = float(item)
-                        if item <= 0:
-                            print("Valor Inválido")
+                        while True:
+                            if item > 0:
+                                break
+                        
+                            print("Valor inválido! Digite um preço positivo.")
 
                     elif mod == "Quantidade":
                         item = int(item)
-                        if item <= 0:
-                            print("Valor Inválido")
+                        while True:
+                            if item > 0:
+                                break
+                        
+                            print("Valor inválido! Digite um preço positivo.")
 
                     produto[mod] = item
 
