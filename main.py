@@ -47,7 +47,15 @@ class GerenciarProdutos:
                 maior_id = produto["ID"]
 
         id = maior_id + 1
-        nome = input("Nome: ")
+
+        while True:
+            nome = input("Nome: ").strip()
+
+            if nome != "":
+                break
+
+            print("O nome não pode ficar vazio!")
+
         while True:
             preco = float(input("Preço: "))
 
@@ -64,7 +72,14 @@ class GerenciarProdutos:
         
             print("Valor inválido! Digite uma quantidade positiva.")
 
-        categoria = input("Categoria: ")
+        while True:
+            categoria = input("Categoria: ").strip()
+
+            if categoria != "":
+                break
+            
+            print("A categoria não pode ficar vazia!")
+
         produto = Produto(id,nome, preco, quantidade, categoria)
         dados = produto.to_dict()
         produtos.append(dados)
@@ -107,8 +122,16 @@ class GerenciarProdutos:
 
                 if mod in ["Nome", "Preço", "Quantidade", "Categoria"]:
 
-                    if mod == "Preço":
-                        
+                    if mod in ["Nome", "Categoria"]:
+                        while True:
+                            item = input("Digite a modificação: ").strip()
+
+                            if item != "":
+                                break
+                            
+                            print(f"{mod} não pode ficar vazio(a)!")
+
+                    elif mod == "Preço":
                         while True:
                             item = float(input("Digite a modificação: "))
                         
@@ -118,7 +141,6 @@ class GerenciarProdutos:
                             print("Valor inválido! Digite um preço positivo.")
 
                     elif mod == "Quantidade":
-
                         while True:
                             item = int(input("Digite a modificação: "))
 
