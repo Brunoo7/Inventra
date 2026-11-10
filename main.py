@@ -110,3 +110,28 @@ class GerenciarProdutos:
 
         if encontrado == False:
             print("Produto não encontrado")
+
+    def excluir_produto(self):
+        busca_id = int(input("Qual o ID do produto que você quer excluir? "))
+        with open("dados.json", "r", encoding="utf-8") as f:
+            busca = json.load(f)
+
+
+        encontrado = False
+
+
+        for produto in busca:
+            if busca_id == produto["ID"]:
+                encontrado = True
+                print(produto)
+                decisao = input("Tem certeza que quer excluir esse produto? (s/n) ")
+                if decisao == "s":
+                    busca.remove(produto)
+                    with open("dados.json", "w", encoding="utf-8") as f:
+                        json.dump(busca, f, indent=4, ensure_ascii=False)
+                    print("Produto excluido")
+                    break
+                else:
+                    print("Produto NÃO excluido")
+        if encontrado == False:
+            print("Produto não encontrado")
