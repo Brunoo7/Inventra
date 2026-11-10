@@ -48,14 +48,21 @@ class GerenciarProdutos:
 
         id = maior_id + 1
         nome = input("Nome: ")
-        preco = float(input("Preço: "))
+        while True:
+            preco = float(input("Preço: "))
 
-        if preco <= 0:
-            print("Valor Inválido")
-        quantidade = int(input("Quantidade disponível: "))
+            if preco > 0:
+                break
 
-        if quantidade <= 0:
-            print("Valor Inválido")
+            print("Valor inválido! Digite um preço positivo.")
+
+        while True:
+            quantidade = int(input("Quantidade disponível: "))
+
+            if preco > 0:
+                break
+        
+            print("Valor inválido! Digite um preço positivo.")
 
         categoria = input("Categoria: ")
         produto = Produto(id,nome, preco, quantidade, categoria)
