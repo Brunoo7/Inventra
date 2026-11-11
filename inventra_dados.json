@@ -1,7 +1,7 @@
 [
     {
         "ID": 1,
-        "Nome": "Teclado mecânico",
+        "Nome": "Teclado mecânico RGB",
         "Preço": 249.9,
         "Quantidade": 15,
         "Categoria": "Periféricos"
@@ -15,45 +15,45 @@
     },
     {
         "ID": 3,
-        "Nome": "Monitor 24 polegadas",
+        "Nome": "Mouse gamer 12000 DPI",
+        "Preço": 139.9,
+        "Quantidade": 4,
+        "Categoria": "Periféricos"
+    },
+    {
+        "ID": 4,
+        "Nome": "Monitor 24 polegadas Full HD",
         "Preço": 799.0,
         "Quantidade": 8,
         "Categoria": "Monitores"
     },
     {
-        "ID": 4,
+        "ID": 5,
+        "Nome": "Monitor 27 polegadas 144 Hz",
+        "Preço": 1399.0,
+        "Quantidade": 3,
+        "Categoria": "Monitores"
+    },
+    {
+        "ID": 6,
         "Nome": "Headset USB",
         "Preço": 159.9,
         "Quantidade": 12,
         "Categoria": "Áudio"
     },
     {
-        "ID": 5,
+        "ID": 7,
+        "Nome": "Caixa de som Bluetooth",
+        "Preço": 119.9,
+        "Quantidade": 18,
+        "Categoria": "Áudio"
+    },
+    {
+        "ID": 8,
         "Nome": "Webcam Full HD",
         "Preço": 189.5,
         "Quantidade": 10,
         "Categoria": "Acessórios"
-    },
-    {
-        "ID": 6,
-        "Nome": "SSD 1 TB",
-        "Preço": 429.9,
-        "Quantidade": 7,
-        "Categoria": "Armazenamento"
-    },
-    {
-        "ID": 7,
-        "Nome": "Memória RAM 16 GB",
-        "Preço": 349.9,
-        "Quantidade": 20,
-        "Categoria": "Hardware"
-    },
-    {
-        "ID": 8,
-        "Nome": "Cabo HDMI 2 m",
-        "Preço": 34.9,
-        "Quantidade": 35,
-        "Categoria": "Cabos"
     },
     {
         "ID": 9,
@@ -61,5 +61,68 @@
         "Preço": 79.9,
         "Quantidade": 14,
         "Categoria": "Acessórios"
+    },
+    {
+        "ID": 10,
+        "Nome": "Hub USB-C 7 em 1",
+        "Preço": 169.0,
+        "Quantidade": 2,
+        "Categoria": "Acessórios"
+    },
+    {
+        "ID": 11,
+        "Nome": "SSD 1 TB NVMe",
+        "Preço": 429.9,
+        "Quantidade": 7,
+        "Categoria": "Armazenamento"
+    },
+    {
+        "ID": 12,
+        "Nome": "HD externo 2 TB",
+        "Preço": 379.9,
+        "Quantidade": 0,
+        "Categoria": "Armazenamento"
+    },
+    {
+        "ID": 13,
+        "Nome": "Memória RAM 16 GB DDR4",
+        "Preço": 349.9,
+        "Quantidade": 20,
+        "Categoria": "Hardware"
+    },
+    {
+        "ID": 14,
+        "Nome": "Placa-mãe AM4",
+        "Preço": 689.0,
+        "Quantidade": 5,
+        "Categoria": "Hardware"
+    },
+    {
+        "ID": 15,
+        "Nome": "Cabo HDMI 2 m",
+        "Preço": 34.9,
+        "Quantidade": 35,
+        "Categoria": "Cabos"
+    },
+    {
+        "ID": 16,
+        "Nome": "Cabo USB-C 1 m",
+        "Preço": 29.9,
+        "Quantidade": 42,
+        "Categoria": "Cabos"
+    },
+    {
+        "ID": 17,
+        "Nome": "Roteador Wi-Fi 6",
+        "Preço": 329.9,
+        "Quantidade": 9,
+        "Categoria": "Redes"
+    },
+    {
+        "ID": 18,
+        "Nome": "Switch 8 portas Gigabit",
+        "Preço": 149.9,
+        "Quantidade": 6,
+        "Categoria": "Redes"
     }
 ]

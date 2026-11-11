@@ -5,17 +5,29 @@ class GerenciarProdutos:
 
     def __init__(self):
         try:
-
             with open("inventra_dados.json", "r", encoding="utf-8") as f:
-                json.load(f)
+                dados = json.load(f)
+
+            if not isinstance(dados, list):
+                dados = []
+
+            produtos_validos = []
+            for produto in dados:
+                if isinstance(produto, dict) and all(chave in produto for chave in ["ID", "Nome", "Preço", "Quantidade", "Categoria"]):
+                    if type(produto["ID"]) == int and isinstance(produto["Nome"], str) and isinstance(produto["Preço"], (float, int)) and type(produto["Quantidade"]) == int and isinstance(produto["Categoria"], str):
+                        if not produto["Nome"].strip() == "" and not produto["Categoria"].strip() == "":
+                            if produto["Preço"] > 0 and produto["ID"] > 0:
+                                if produto["Quantidade"] >= 0:
+                                    produtos_validos.append(produto)
+                        
+            with open("inventra_dados.json", "w", encoding="utf-8") as f:
+                    json.dump(produtos_validos, f, ensure_ascii=False, indent=4)
 
         except FileNotFoundError:
-
             with open("inventra_dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
 
         except json.JSONDecodeError:
-
             with open("inventra_dados.json", "w", encoding="utf-8") as f:
                 json.dump([], f)
 
@@ -154,7 +166,7 @@ class GerenciarProdutos:
                 if encontrado == False:
                     print("Categoria não encontrada")
                 break
-            
+
             else:
                 print("A categoria não pode ficar vazia!")
 
