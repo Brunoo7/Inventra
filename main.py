@@ -146,7 +146,7 @@ class GerenciarProdutos:
             if busca_id == produto["ID"]:
                 encontrado = True
                 print(produto)
-                mod = input("Qual item do produto quer modificar? ")
+                mod = input("Qual item do produto quer modificar? ").strip().capitalize()
 
                 if mod in ["Nome", "Preço", "Quantidade", "Categoria"]:
 
@@ -246,7 +246,7 @@ def menu():
             print("3 - Buscar Produto")
             print("4 - Atualizar Produto")
             print("5 - Excluir Produto")
-            print("6 - Saindo...")
+            print("6 - Sair")
             opcao = int(input("Escolha uma opção: "))
 
             match opcao:
