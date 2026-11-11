@@ -57,20 +57,28 @@ class GerenciarProdutos:
             print("O nome não pode ficar vazio!")
 
         while True:
-            preco = float(input("Preço: "))
+            try:
+                preco = float(input("Preço: "))
 
-            if preco > 0:
-                break
+                if preco > 0:
+                    break
 
-            print("Valor inválido! Digite um preço positivo.")
+                print("Valor inválido! Digite um preço positivo.")
+                
+            except ValueError:
+                print("Digite apenas números")
 
         while True:
-            quantidade = int(input("Quantidade disponível: "))
+            try:
+                quantidade = int(input("Quantidade disponível: "))
 
-            if quantidade >= 0:
-                break
-        
-            print("Valor inválido! Digite uma quantidade positiva.")
+                if quantidade >= 0:
+                    break
+            
+                print("Digite uma quantidade maior ou igual a zero.")
+
+            except ValueError:
+                print("Digite apenas números")
 
         while True:
             categoria = input("Categoria: ").strip()
@@ -78,7 +86,7 @@ class GerenciarProdutos:
             if categoria != "":
                 break
 
-            print("Valor inválido! Digite uma quantidade maior ou igual a zero.")
+            print("A categoria não pode ficar vazia!")
 
         produto = Produto(id,nome, preco, quantidade, categoria)
         dados = produto.to_dict()
@@ -133,21 +141,28 @@ class GerenciarProdutos:
 
                     elif mod == "Preço":
                         while True:
-                            item = float(input("Digite a modificação: "))
-                        
-                            if item > 0:
-                                break
+                            try:
+                                item = float(input("Digite a modificação: "))
                             
-                            print("Valor inválido! Digite um preço positivo.")
+                                if item > 0:
+                                    break
+                                
+                                print("Valor inválido! Digite um preço positivo.")
+                            except ValueError:
+                                print("Digite apenas números")
 
                     elif mod == "Quantidade":
                         while True:
-                            item = int(input("Digite a modificação: "))
+                            try:
+                                item = int(input("Digite a modificação: "))
 
-                            if item >= 0:
-                                break
-                            
-                            print("Valor inválido! Digite uma quantidade maior ou igual a zero.")
+                                if item >= 0:
+                                    break
+                                
+                                print("Valor inválido! Digite uma quantidade maior ou igual a zero.")
+
+                            except ValueError:
+                                print("Digite apenas números")
 
                     produto[mod] = item
 
