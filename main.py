@@ -10,10 +10,11 @@ def menu():
             print("\n======ARMAZEM======")
             print("1 - Cadastrar Produto")
             print("2 - Listar Produtos")
-            print("3 - Buscar Produto")
-            print("4 - Atualizar Produto")
-            print("5 - Excluir Produto")
-            print("6 - Sair")
+            print("3 - Buscar Produto Pelo ID")
+            print("4 - Buscar Produto Pelo Nome")
+            print("5 - Atualizar Produto")
+            print("6 - Excluir Produto")
+            print("7 - Sair")
             opcao = int(input("Escolha uma opção: "))
 
             match opcao:
@@ -27,18 +28,22 @@ def menu():
                     prod.listar_produtos()
 
                 case 3:
-                    print("Buscar Produto")
+                    print("Buscar Produto Pelo ID")
                     prod.buscar_produto()
 
                 case 4:
+                    print("Buscar Produto Pelo Nome")
+                    prod.buscar_por_nome()
+
+                case 5:
                     print("Atualizar Produto")
                     prod.atualizar_produto()
 
-                case 5:
+                case 6:
                     print("Excluir Produto")
                     prod.excluir_produto()
 
-                case 6:
+                case 7:
                     print("Saindo...")
 
                 case _:

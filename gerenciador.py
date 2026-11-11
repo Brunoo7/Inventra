@@ -106,11 +106,32 @@ class GerenciarProdutos:
         encontrado = False
 
         for produto in busca:
+
             if busca_id == produto["ID"]:
                 encontrado = True
                 print(produto)
+
         if encontrado == False:
             print("Produto não encontrado")
+
+    def buscar_por_nome(self):
+        busca_nome = input("Qual o nome do produto que você quer buscar? ").strip().lower()
+        encontrado = False
+        if busca_nome != "":
+
+            with open("inventra_dados.json", "r", encoding="utf-8") as f:
+                busca = json.load(f)
+
+            for produto in busca:
+                if busca_nome in produto["Nome"].lower():
+                    encontrado = True
+                    print(produto)
+
+            if encontrado == False:
+                print("Produto não encontrado")
+
+        else:
+            print("O nome não pode ficar vazio!")
 
     def atualizar_produto(self):
         while True:
