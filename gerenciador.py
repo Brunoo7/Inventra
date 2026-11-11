@@ -133,6 +133,25 @@ class GerenciarProdutos:
         else:
             print("O nome não pode ficar vazio!")
 
+    def filtrar_por_categoria(self):
+        busca_categoria = input("Qual categoria você quer buscar? ").strip().lower()
+        encontrado = False
+        if busca_categoria != "":
+
+            with open("inventra_dados.json", "r", encoding="utf-8") as f:
+                busca = json.load(f)
+
+            for produto in busca:
+                if busca_categoria == produto["Categoria"].lower():
+                    encontrado = True
+                    print(produto)
+
+            if encontrado == False:
+                print("Categoria não encontrada")
+
+        else:
+            print("A categoria não pode ficar vazia!")
+
     def atualizar_produto(self):
         while True:
             try:

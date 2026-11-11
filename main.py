@@ -14,7 +14,8 @@ def menu():
             print("4 - Buscar Produto Pelo Nome")
             print("5 - Atualizar Produto")
             print("6 - Excluir Produto")
-            print("7 - Sair")
+            print("7 - Filtrar Por Categoria")
+            print("8 - Sair")
             opcao = int(input("Escolha uma opção: "))
 
             match opcao:
@@ -44,6 +45,10 @@ def menu():
                     prod.excluir_produto()
 
                 case 7:
+                    print("Filtrar Por Categoria")
+                    prod.filtrar_por_categoria()
+
+                case 8:
                     print("Saindo...")
 
                 case _:
