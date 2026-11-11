@@ -4,7 +4,7 @@ def menu():
     opcao = 0
     prod = GerenciarProdutos()
 
-    while opcao != 6:
+    while opcao !=9:
 
         try:
             print("\n======ARMAZEM======")
@@ -15,7 +15,8 @@ def menu():
             print("5 - Atualizar Produto")
             print("6 - Excluir Produto")
             print("7 - Filtrar Por Categoria")
-            print("8 - Sair")
+            print("8 - Alerta De Estoque Baixo")
+            print("9 - Sair")
             opcao = int(input("Escolha uma opção: "))
 
             match opcao:
@@ -49,6 +50,10 @@ def menu():
                     prod.filtrar_por_categoria()
 
                 case 8:
+                    print("Alerta De Estoque Baixo")
+                    prod.alerta_estoque_baixo()
+
+                case 9:
                     print("Saindo...")
 
                 case _:

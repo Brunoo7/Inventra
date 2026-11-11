@@ -264,3 +264,27 @@ class GerenciarProdutos:
 
         if encontrado == False:
             print("Produto não encontrado")
+
+    def alerta_estoque_baixo(self):
+        while True:
+            try:
+                limite = int(input("Digite o limite de estoque: "))
+                encontrado = False
+                if limite < 0:
+                    print("Digite um limite maior ou igual a zero.")
+
+                else:
+                    with open("inventra_dados.json", "r", encoding="utf-8") as f:
+                        busca = json.load(f)
+
+                    for produto in busca:
+                        if limite >= produto["Quantidade"]:
+                            encontrado = True
+                            print(produto)
+                            
+                    if encontrado == False:
+                        print("Não tem produtos com o estoque igual ou menor do que o limite selecionado!")    
+                    break
+                
+            except ValueError:
+                print("O limite deve ser um número")
