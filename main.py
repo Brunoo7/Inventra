@@ -98,8 +98,11 @@ class GerenciarProdutos:
     def listar_produtos(self):
         with open("inventra_dados.json", "r", encoding="utf-8") as f:
             dados_lidos = json.load(f)
-            for produto in dados_lidos:
-                print(produto)
+            if dados_lidos == []:
+                print("Nenhum produto cadastrado!")
+            else:
+                for produto in dados_lidos:
+                    print(produto)
 
     def buscar_produto(self):
         while True:
@@ -216,7 +219,12 @@ class GerenciarProdutos:
             if busca_id == produto["ID"]:
                 encontrado = True
                 print(produto)
-                decisao = input("Tem certeza que quer excluir esse produto? (s/n) ").strip().lower()
+                while True:
+                        decisao = input("Tem certeza que quer excluir esse produto? (s/n) ").strip().lower()
+                        if decisao not in ["s", "n"]:
+                            print("Digite apenas s ou n")
+                        else:
+                            break
 
                 if decisao == "s":
                     busca.remove(produto)
