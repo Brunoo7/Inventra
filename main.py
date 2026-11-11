@@ -102,7 +102,17 @@ class GerenciarProdutos:
                 print(produto)
 
     def buscar_produto(self):
-        busca_id = int(input("Qual o ID do produto que você quer buscar? "))
+        while True:
+            try:
+                busca_id = int(input("Qual o ID do produto que você quer buscar? "))
+                if busca_id > 0:
+                    break
+
+                print("O ID tem que ser um número positivo")
+
+            except ValueError:
+                print("O ID tem que ser um número inteiro!")
+
         with open("inventra_dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
@@ -116,7 +126,17 @@ class GerenciarProdutos:
             print("Produto não encontrado")
 
     def atualizar_produto(self):
-        busca_id = int(input("Qual o ID do produto que você quer atualizar? "))
+        while True:
+            try:
+                busca_id = int(input("Qual o ID do produto que você quer atualizar? "))
+                if busca_id > 0:
+                    break
+
+                print("O ID tem que ser um número positivo")
+
+            except ValueError:
+                print("O ID tem que ser um número inteiro!")
+
         with open("inventra_dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
@@ -175,7 +195,17 @@ class GerenciarProdutos:
             print("Produto não encontrado")
 
     def excluir_produto(self):
-        busca_id = int(input("Qual o ID do produto que você quer excluir? "))
+        while True:
+            try:
+                busca_id = int(input("Qual o ID do produto que você quer excluir? "))
+                if busca_id > 0:
+                    break
+
+                print("O ID tem que ser um número positivo")
+
+            except ValueError:
+                print("O ID tem que ser um número inteiro!")
+
         with open("inventra_dados.json", "r", encoding="utf-8") as f:
             busca = json.load(f)
 
@@ -186,7 +216,7 @@ class GerenciarProdutos:
             if busca_id == produto["ID"]:
                 encontrado = True
                 print(produto)
-                decisao = input("Tem certeza que quer excluir esse produto? (s/n) ")
+                decisao = input("Tem certeza que quer excluir esse produto? (s/n) ").strip().lower()
 
                 if decisao == "s":
                     busca.remove(produto)
