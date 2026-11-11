@@ -37,7 +37,7 @@ Inventra/
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/Inventra.git
+git clone https://github.com/Brunoo7/Inventra.git
 ```
 
 2. Entre na pasta do projeto:
