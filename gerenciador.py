@@ -115,42 +115,48 @@ class GerenciarProdutos:
             print("Produto não encontrado")
 
     def buscar_por_nome(self):
-        busca_nome = input("Qual o nome do produto que você quer buscar? ").strip().lower()
-        encontrado = False
-        if busca_nome != "":
+        while True:
+            busca_nome = input("Qual o nome do produto que você quer buscar? ").strip().lower()
+            encontrado = False
 
-            with open("inventra_dados.json", "r", encoding="utf-8") as f:
-                busca = json.load(f)
+            if busca_nome != "":
 
-            for produto in busca:
-                if busca_nome in produto["Nome"].lower():
-                    encontrado = True
-                    print(produto)
+                with open("inventra_dados.json", "r", encoding="utf-8") as f:
+                    busca = json.load(f)
 
-            if encontrado == False:
-                print("Produto não encontrado")
+                for produto in busca:
 
-        else:
-            print("O nome não pode ficar vazio!")
+                    if busca_nome in produto["Nome"].lower():
+                        encontrado = True
+                        print(produto)
+
+                if encontrado == False:
+                    print("Produto não encontrado")
+                break
+
+            else:
+                print("O nome não pode ficar vazio!")
 
     def filtrar_por_categoria(self):
-        busca_categoria = input("Qual categoria você quer buscar? ").strip().lower()
-        encontrado = False
-        if busca_categoria != "":
+        while True:
+            busca_categoria = input("Qual categoria você quer buscar? ").strip().lower()
+            encontrado = False
+            if busca_categoria != "":
 
-            with open("inventra_dados.json", "r", encoding="utf-8") as f:
-                busca = json.load(f)
+                with open("inventra_dados.json", "r", encoding="utf-8") as f:
+                    busca = json.load(f)
 
-            for produto in busca:
-                if busca_categoria == produto["Categoria"].lower():
-                    encontrado = True
-                    print(produto)
+                for produto in busca:
+                    if busca_categoria == produto["Categoria"].lower():
+                        encontrado = True
+                        print(produto)
 
-            if encontrado == False:
-                print("Categoria não encontrada")
-
-        else:
-            print("A categoria não pode ficar vazia!")
+                if encontrado == False:
+                    print("Categoria não encontrada")
+                break
+            
+            else:
+                print("A categoria não pode ficar vazia!")
 
     def atualizar_produto(self):
         while True:
@@ -285,6 +291,6 @@ class GerenciarProdutos:
                     if encontrado == False:
                         print("Não tem produtos com o estoque igual ou menor do que o limite selecionado!")    
                     break
-                
+
             except ValueError:
                 print("O limite deve ser um número")
