@@ -4,7 +4,7 @@ def menu():
     opcao = 0
     prod = GerenciarProdutos()
 
-    while opcao !=9:
+    while opcao !=10:
 
         try:
             print("\n======ARMAZEM======")
@@ -16,44 +16,50 @@ def menu():
             print("6 - Excluir Produto")
             print("7 - Filtrar Por Categoria")
             print("8 - Alerta De Estoque Baixo")
-            print("9 - Sair")
+            print("9 - Valor Total Do Estoque")
+            print("10 - Sair")
+            print("===================")
             opcao = int(input("Escolha uma opção: "))
 
             match opcao:
 
                 case 1:
-                    print("Cadastrar Produto")
+                    print("===Cadastrar Produto===")
                     prod.cadastrar_produto()
 
                 case 2:
-                    print("Listar Produtos")
+                    print("===Listar Produtos===")
                     prod.listar_produtos()
 
                 case 3:
-                    print("Buscar Produto Pelo ID")
+                    print("===Buscar Produto Pelo ID===")
                     prod.buscar_produto()
 
                 case 4:
-                    print("Buscar Produto Pelo Nome")
+                    print("===Buscar Produto Pelo Nome===")
                     prod.buscar_por_nome()
 
                 case 5:
-                    print("Atualizar Produto")
+                    print("===Atualizar Produto===")
                     prod.atualizar_produto()
 
                 case 6:
-                    print("Excluir Produto")
+                    print("===Excluir Produto===")
                     prod.excluir_produto()
 
                 case 7:
-                    print("Filtrar Por Categoria")
+                    print("===Filtrar Por Categoria===")
                     prod.filtrar_por_categoria()
 
                 case 8:
-                    print("Alerta De Estoque Baixo")
+                    print("===Alerta De Estoque Baixo===")
                     prod.alerta_estoque_baixo()
 
                 case 9:
+                    print("===Valor Total Do Estoque===")
+                    prod.valor_total_do_estoque()
+
+                case 10:
                     print("Saindo...")
 
                 case _:

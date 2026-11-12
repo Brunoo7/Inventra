@@ -306,3 +306,13 @@ class GerenciarProdutos:
 
             except ValueError:
                 print("O limite deve ser um número")
+
+    def valor_total_do_estoque(self):
+        with open("inventra_dados.json", "r", encoding="utf-8") as f:
+            dados = json.load(f)
+
+        total = 0
+        for produto in dados:
+            total += (produto["Preço"] * produto["Quantidade"])
+
+        print(f"O valor total do estoque é {total:.2f}")
