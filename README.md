@@ -1,149 +1,84 @@
-# Inventra 📦
+# Inventra — Gerenciador de Estoque
 
-Sistema de gerenciamento de produtos e estoque desenvolvido em Python, com persistência de dados em arquivo JSON e interface de menu no terminal.
+Sistema de gerenciamento de estoque desenvolvido em Python, com persistência de dados em arquivos JSON. O projeto permite cadastrar, consultar, atualizar e excluir produtos, além de realizar operações de controle e acompanhamento do estoque.
 
-O Inventra permite cadastrar, consultar, filtrar, atualizar e excluir produtos, além de identificar itens com estoque baixo, oferecendo uma estrutura simples para o controle de informações de um estoque.
+O Inventra começou como um exercício prático de programação orientada a objetos e evoluiu para uma aplicação de gerenciamento de estoque via terminal.
 
 ## Funcionalidades
 
-- [x] Cadastro de produtos
-- [x] Listagem de produtos
-- [x] Busca de produtos por ID
-- [x] Busca de produtos por nome (parcial, sem diferenciar maiúsculas de minúsculas)
-- [x] Filtro de produtos por categoria
-- [x] Alerta de estoque baixo (produtos com quantidade igual ou menor que um limite)
-- [x] Atualização de informações dos produtos
-- [x] Exclusão de produtos, com confirmação
-- [x] Geração automática de IDs
-- [x] Persistência de dados em JSON
-- [x] Validação de campos vazios, preços, quantidades e IDs
-- [x] Verificação do arquivo de dados ao iniciar (registros inválidos são descartados)
-- [x] Organização do código em módulos
+- **Cadastro de produtos:** registra ID, nome, preço, quantidade e categoria.
+- **Listagem:** exibe os produtos cadastrados.
+- **Busca por ID:** localiza produtos pelo identificador.
+- **Busca por nome:** permite pesquisas utilizando partes do nome, sem diferenciar letras maiúsculas e minúsculas.
+- **Atualização:** permite modificar os dados de produtos cadastrados.
+- **Exclusão:** remove produtos mediante confirmação.
+- **Filtro por categoria:** exibe produtos de uma categoria específica.
+- **Alerta de estoque baixo:** identifica produtos cuja quantidade está abaixo de um limite definido.
+- **Valor total do estoque:** calcula o valor financeiro total dos produtos disponíveis.
 
 ## Tecnologias utilizadas
 
-- **Python 3.10+** (utiliza `match/case`)
-- **JSON** para armazenamento e persistência de dados
-- **Git e GitHub** para versionamento e hospedagem do projeto
+- Python
+- Programação Orientada a Objetos (POO)
+- JSON
+- Manipulação de arquivos
+- Git e GitHub
 
 ## Estrutura do projeto
 
 ```text
 Inventra/
 │
-├── main.py                # Menu principal e ponto de entrada
-├── gerenciador.py         # Classe GerenciarProdutos (regras e operações)
-├── produto.py             # Classe Produto (modelo de dados)
-├── inventra_dados.json    # Banco de dados (arquivo JSON)
+├── main.py
+├── produto.py
+├── gerenciador.py
+├── inventra_dados.json
 └── README.md
 ```
 
-| Arquivo | Responsabilidade |
-|---|---|
-| `main.py` | Exibe o menu, lê a opção escolhida e chama o método correspondente |
-| `gerenciador.py` | Contém todas as operações sobre os produtos e a leitura/gravação do JSON |
-| `produto.py` | Define a classe `Produto` e converte o objeto em dicionário (`to_dict`) |
-
 ## Como executar
 
-1. Clone o repositório:
+**1. Clone o repositório:**
 
 ```bash
 git clone https://github.com/Brunoo7/Inventra.git
 ```
 
-2. Entre na pasta do projeto:
+**2. Entre na pasta do projeto:**
 
 ```bash
 cd Inventra
 ```
 
-3. Execute o programa:
+**3. Execute a aplicação:**
 
 ```bash
 python main.py
 ```
 
-> Não é necessário instalar bibliotecas externas. O projeto utiliza recursos nativos do Python.
+Não é necessário instalar bibliotecas externas. O projeto utiliza recursos nativos do Python.
 
-> Execute o programa **de dentro da pasta do projeto**: o arquivo `inventra_dados.json` é procurado na pasta em que o comando é executado.
+## Persistência e validação de dados
 
-## Menu
+Os dados dos produtos são armazenados em um arquivo JSON, permitindo que as informações permaneçam disponíveis após o encerramento da aplicação.
 
-```text
-======ARMAZEM======
-1 - Cadastrar Produto
-2 - Listar Produtos
-3 - Buscar Produto Pelo ID
-4 - Buscar Produto Pelo Nome
-5 - Atualizar Produto
-6 - Excluir Produto
-7 - Filtrar Por Categoria
-8 - Alerta De Estoque Baixo
-9 - Sair
-```
+O sistema também realiza validações para lidar com situações como:
 
-| Opção | O que faz |
-|---|---|
-| 1 | Cadastra um produto (nome, preço, quantidade e categoria); o ID é gerado automaticamente |
-| 2 | Lista todos os produtos cadastrados |
-| 3 | Busca um produto pelo ID |
-| 4 | Busca produtos cujo nome contém o texto digitado |
-| 5 | Atualiza o nome, o preço, a quantidade ou a categoria de um produto |
-| 6 | Exclui um produto após confirmação (`s`/`n`) |
-| 7 | Lista os produtos de uma categoria |
-| 8 | Lista os produtos com estoque igual ou menor que o limite informado |
-| 9 | Encerra o programa |
+- Arquivo JSON inexistente.
+- Arquivo com conteúdo inválido ou corrompido.
+- Estrutura de dados inesperada.
+- Produtos com campos ausentes ou valores inválidos.
+- Entradas incorretas fornecidas pelo usuário.
 
-## Armazenamento de dados
+## Objetivos de aprendizado
 
-Os produtos são armazenados no arquivo `inventra_dados.json`.
+O desenvolvimento do Inventra permitiu praticar:
 
-Cada produto possui as seguintes informações:
-
-- ID
-- Nome
-- Preço
-- Quantidade disponível
-- Categoria
-
-Exemplo de registro:
-
-```json
-{
-    "ID": 1,
-    "Nome": "Teclado mecânico RGB",
-    "Preço": 249.9,
-    "Quantidade": 15,
-    "Categoria": "Periféricos"
-}
-```
-
-Os dados são mantidos no arquivo mesmo após o encerramento do programa.
-
-O repositório acompanha um **banco de exemplo com 18 produtos em 8 categorias**, incluindo alguns itens com estoque baixo. Para testar o alerta de estoque (opção 8), experimente o limite `5`. Se quiser começar do zero, basta substituir o conteúdo do arquivo por `[]`.
-
-## Validações
-
-- Nome e categoria não podem ficar vazios
-- Preço deve ser um número maior que zero
-- Quantidade deve ser um número inteiro maior ou igual a zero
-- IDs devem ser números inteiros positivos
-- Ao iniciar, o programa verifica o arquivo de dados e descarta registros incompletos ou com valores inválidos
-- Entradas inválidas apenas repetem a pergunta, sem interromper o programa
-
-## Objetivo
-
-Projeto desenvolvido com o objetivo de praticar conceitos de programação orientada a objetos, manipulação de arquivos, persistência de dados, estruturas de dados, modularização e lógica de programação em Python.
-
-## Melhorias futuras
-
-- [ ] Controle de entrada e saída de mercadorias
-- [ ] Cálculo do valor total do estoque
-- [ ] Migração do JSON para SQLite
-- [ ] Integração com SQLAlchemy
-- [ ] Desenvolvimento de uma API REST com FastAPI
-
----
-
-**Status:** Em desenvolvimento.
+- Criação e organização de classes.
+- Encapsulamento de responsabilidades.
+- Métodos e atributos de instância.
+- Manipulação de listas e dicionários.
+- Leitura e escrita de arquivos JSON.
+- Tratamento de exceções.
+- Validação e integridade de dados.
+- Organização de um projeto Python em múltiplos módulos.
